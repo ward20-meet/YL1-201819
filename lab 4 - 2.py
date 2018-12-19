@@ -1,0 +1,1 @@
+print("ward" * 3)c
