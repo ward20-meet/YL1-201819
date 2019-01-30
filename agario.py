@@ -3,6 +3,8 @@ import time
 import random
 import math
 from ball import Ball
+from turtle import *
+bgcolor("black")
 turtle.colormode(1)
 turtle.tracer(0)
 turtle.hideturtle()
@@ -11,7 +13,7 @@ running = True
 screen_width = turtle.getcanvas().winfo_width()/2
 screen_height = turtle.getcanvas().winfo_height()/2
 my_ball = Ball(0,0,5,10,100,"blue")
-number_of_balls = 5
+number_of_balls = 1
 minimum_ball_radius = 10
 maximum_ball_radius = 100
 minimum_ball_dx = -5
@@ -51,6 +53,7 @@ def check_all_balls_collisions():
 	for ball_a in all_balls:
 		for ball_b in all_balls: 
 			if collide(ball_a, ball_b): 
+				print("COLLID")
 				r1 = ball_a.r
 				r2 = ball_b.r
 				x = random.randint(-screen_width+maximum_ball_radius,screen_width - maximum_ball_radius)
@@ -76,17 +79,19 @@ def movearound():
  	my_ball.goto(turtle.getcanvas().winfo_pointerx()-screen_width ,screen_height - turtle.getcanvas().winfo_pointery())
 
 
-
 while running == True :
 	screen_width = turtle.getcanvas().winfo_width()/2
 	screen_height =  turtle.getcanvas().winfo_height()/2
 
 
 
+
 	movearound() 
 	move_all_balls()
 	check_all_balls_collisions()
+
 	turtle.update() 
+	time.sleep(0.1)
 
 
 
